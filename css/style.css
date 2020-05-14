@@ -1,0 +1,18 @@
+#selectedIcons{
+  width: 100%;
+}
+.icons-container div{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-top: 2rem;
+}
+  .icons-container div i{
+    font-size: 150%;
+    margin: .2rem;
+    color: #666;
+    cursor: pointer;
+  }
+    .icons-container div i:hover{
+      color: #00a1ab;
+    }

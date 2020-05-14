@@ -1,47 +1,85 @@
-/* This section of the code registers a new block, sets an icon and a category, and indicates what type of fields it'll include. */
+jQuery.getJSON(
+  'https://raw.githubusercontent.com/FortAwesome/Font-Awesome/master/metadata/icons.json',
+  function(data) {
 
-wp.blocks.registerBlockType('brad/border-box', {
-  title: 'FA Icons Picker',
-  icon: 'welcome-add-page',
-  category: 'common',
-  attributes: {
-    content: {type: 'string'}
-  },
-  edit: function(props) {
+    const icons = JSON.parse(JSON.stringify(data));
+    //icons["fa-code"].property
 
-    function updateContent(event) {
-      props.setAttributes({content: event.target.value})
+    const htmlToElem = ( html ) => wp.element.RawHTML( { children: html } );
+
+    function renderHtmlIconBlock(){
+
+      let htmlBlock = '';
+
+      const entries = Object.entries(icons);
+      entries.forEach((item, i) => {
+
+        let suffix;
+
+        switch (item[1].free[0]) {
+          case 'brands':
+            suffix = 'b';
+            break;
+          case 'solid':
+            suffix = 's';
+            break;
+          default:
+            suffix = 'b';
+        }
+
+        htmlBlock += '<i title="' + item[1].label + '" class="fa' + suffix + ' fa-' + item[0] + '"></i>';
+
+      });
+
+      return htmlBlock;
     }
 
-    jQuery.getJSON(
-      'https://raw.githubusercontent.com/FortAwesome/Font-Awesome/master/metadata/icons.json',
-      function(data) {
-        var icons = JSON.parse(JSON.stringify(data));
-        //icons["envelope"]
-      }
-    );
+    wp.blocks.registerBlockType('brad/border-box', {
+      title: 'FA Icons Picker',
+      icon: 'welcome-add-page',
+      category: 'common',
+      attributes: {
+        content: {type: 'string'}
+      },
+      edit: function(props) {
 
-    return React.createElement(
-      "div",
-      null,
-      React.createElement(
-        "h4",
-        { style: { color: "#666" } },
-        "Fonts Awesome Icon Picker"
-      ),
-      React.createElement("input", { type: "text", value: props.attributes.content, onChange: updateContent }),
-      React.createElement(
-        "div",
-        null,
-        ""
-      )
-    );
-  },
-  save: function(props) {
-    return wp.element.createElement(
-      "div",
-      null,
-      props.attributes.content
-    );
+        function updateContent(event) {
+          props.setAttributes({content: event.target.value})
+        }
+
+        return React.createElement(
+          'div',
+          null,
+          React.createElement(
+            'h4',
+            { style: { color: "#666" } },
+            'Fonts Awesome Icon Picker'
+          ),
+          React.createElement(
+            'input',
+            {
+              id: 'selectedIcons',
+              type: 'text',
+              placeholder: 'Selected Icons',
+              value: props.attributes.content,
+              onChange: updateContent
+            }
+          ),
+          React.createElement(
+            "div",
+            { className: 'icons-container' },
+            htmlToElem( renderHtmlIconBlock() ),
+          )
+        );
+      },
+      save: function(props) {
+        return wp.element.createElement(
+          'div',
+          null,
+          props.attributes.content
+        );
+      }
+    })
+
   }
-})
+);
