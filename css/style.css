@@ -1,17 +1,33 @@
 #selectedIcons{
   width: 100%;
 }
+
 .icons-container div{
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   margin-top: 2rem;
+  height: 30vh;
+  overflow-y: auto;
 }
+
+.selected-icons-display i,
+.icons-container div i{
+  font-size: 150%;
+  margin: .2rem;
+  cursor: pointer;
+  transition-duration: .1s;
+}
+  .selected-icons-display i:hover,
+  .icons-container div i:hover{
+    transform: scale(1.2);
+  }
+  .selected-icons-display i{
+    color: #8f7a8c;
+    font-size: 200%;
+  }
   .icons-container div i{
-    font-size: 150%;
-    margin: .2rem;
     color: #666;
-    cursor: pointer;
   }
     .icons-container div i:hover{
       color: #00a1ab;

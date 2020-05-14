@@ -1,9 +1,25 @@
-jQuery.getJSON(
+$(document).ready(function(){
+
+  function insertIconContent(dataClass){
+
+    let iconHtml = '<i class="' + dataClass + '"></i>'
+
+    $('#selectedIcons').val($('#selectedIcons').val() + iconHtml);
+    $('#iconsDisplayContainer').append(iconHtml);
+
+  }
+
+  $(document).on('click', '.fwp-icon', function(){
+    insertIconContent($(this).attr('data-class'));
+  });
+
+});
+
+$.getJSON(
   'https://raw.githubusercontent.com/FortAwesome/Font-Awesome/master/metadata/icons.json',
   function(data) {
 
     const icons = JSON.parse(JSON.stringify(data));
-    //icons["fa-code"].property
 
     const htmlToElem = ( html ) => wp.element.RawHTML( { children: html } );
 
@@ -27,25 +43,18 @@ jQuery.getJSON(
             suffix = 'b';
         }
 
-        htmlBlock += '<i title="' + item[1].label + '" class="fa' + suffix + ' fa-' + item[0] + '"></i>';
+        htmlBlock += '<i title="' + item[1].label + '" class="fwp-icon fa' + suffix + ' fa-' + item[0] + '" data-class="fa' + suffix + ' fa-' + item[0] + '"></i>';
 
       });
 
       return htmlBlock;
     }
 
-    wp.blocks.registerBlockType('brad/border-box', {
-      title: 'FA Icons Picker',
+    wp.blocks.registerBlockType('fwp/icons', {
+      title: 'FontsAwesome Icons Picker',
       icon: 'welcome-add-page',
       category: 'common',
-      attributes: {
-        content: {type: 'string'}
-      },
       edit: function(props) {
-
-        function updateContent(event) {
-          props.setAttributes({content: event.target.value})
-        }
 
         return React.createElement(
           'div',
@@ -56,27 +65,32 @@ jQuery.getJSON(
             'Fonts Awesome Icon Picker'
           ),
           React.createElement(
+            'div',
+            {
+              id: 'iconsDisplayContainer',
+              className: 'selected-icons-display'
+            }
+          ),
+          React.createElement(
             'input',
             {
               id: 'selectedIcons',
-              type: 'text',
-              placeholder: 'Selected Icons',
-              value: props.attributes.content,
-              onChange: updateContent
+              type: 'hidden',
+              placeholder: 'Selected Icons'
             }
           ),
           React.createElement(
             "div",
-            { className: 'icons-container' },
-            htmlToElem( renderHtmlIconBlock() ),
+            {
+              className: 'icons-container'
+            },
+            htmlToElem( renderHtmlIconBlock() )
           )
         );
       },
       save: function(props) {
-        return wp.element.createElement(
-          'div',
-          null,
-          props.attributes.content
+        return (
+          htmlToElem( $('#selectedIcons').val() )
         );
       }
     })

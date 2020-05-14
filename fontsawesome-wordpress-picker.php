@@ -12,6 +12,13 @@
   function loadFwpBlock() {
 
     wp_enqueue_script(
+      'jquery-3.5.1',
+      'https://code.jquery.com/jquery-3.5.1.min.js',
+      array(),
+      true
+    );
+
+    wp_enqueue_script(
       'fwp-block',
       plugin_dir_url(__FILE__) . 'js/fwp-block.js',
       array('wp-blocks','wp-editor'),
