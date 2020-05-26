@@ -2,7 +2,7 @@
   width: 100%;
 }
 
-.icons-container div{
+.icons-container{
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -12,23 +12,23 @@
 }
 
 .selected-icons-display i,
-.icons-container div i{
+.icons-container i{
   font-size: 150%;
   margin: .2rem;
   cursor: pointer;
   transition-duration: .1s;
 }
   .selected-icons-display i:hover,
-  .icons-container div i:hover{
+  .icons-container i:hover{
     transform: scale(1.2);
   }
   .selected-icons-display i{
     color: #8f7a8c;
     font-size: 200%;
   }
-  .icons-container div i{
+  .icons-container i{
     color: #666;
   }
-    .icons-container div i:hover{
+    .icons-container i:hover{
       color: #00a1ab;
     }

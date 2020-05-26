@@ -37,7 +37,7 @@
       'style',
       plugin_dir_url(__FILE__) . 'css/style.css',
       null,
-      '0.0.1',
+      '0.1.0',
       'screen'
     );
 
