@@ -1,7 +1,7 @@
 # FontAwesome WordPress Picker
 WordPress plugin to use Font Awesome icons on posts and pages as a Gutenberg Block
 
-![Cover Image](https://i.ibb.co/9qHK2xh/Screenshot-2020-05-14-Edit-Post-Valkyria-tech-Word-Press.png)
+![Cover Image](https://i.ibb.co/dkNtKCj/Screenshot-2020-05-27-Edit-Post-Valkyria-tech-Word-Press-1.png)
 
 Based on icons provided in [metadata](https://github.com/FortAwesome/Font-Awesome/tree/master/metadata) folder from source project
 
