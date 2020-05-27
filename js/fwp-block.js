@@ -52,19 +52,28 @@ wp.blocks.registerBlockType('fwp/icons', {
     if(!props.attributes.content)
       props.attributes.content = '';
 
-    function insertIconContent(dataClass){
+    function insertIconContent(dataClass, title){
 
-      let iconHtml = '<i class="' + dataClass + '"></i>';
+      let iconHtml = '<i title = "' + title + '" class="' + dataClass + ' displayed-icon"></i>';
 
-      props.attributes.content += iconHtml;
-      $('#iconsDisplayContainer div').append(iconHtml);
+      props.setAttributes({content: props.attributes.content + iconHtml});
 
     }
 
     //reset click listeners
     $(document).off('click', '.fwp-icon');
     $(document).on('click', '.fwp-icon', function(){
-      insertIconContent($(this).attr('data-class'));
+      insertIconContent($(this).attr('data-class'), $(this).attr('title'));
+    });
+
+    $(document).off('click', '.displayed-icon');
+    $(document).on('click', '.displayed-icon', function(){
+
+      let element = $(this).get()[0].outerHTML;
+      props.setAttributes({content: props.attributes.content.replace(element, '')});
+
+      $(this).remove();
+
     });
 
     return React.createElement(
