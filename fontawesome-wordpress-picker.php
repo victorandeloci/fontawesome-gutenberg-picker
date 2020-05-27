@@ -1,9 +1,9 @@
 <?php
 
   /*
-  * Plugin Name: Fonts Awesome WP Picker
-  * Plugin URI: https://github.com/victorandeloci/fontsawesome-wordpress-picker
-  * Description: WordPress plugin to use Fonts Awesome icons on posts and pages
+  * Plugin Name: Font Awesome WP Picker
+  * Plugin URI: https://github.com/victorandeloci/fontawesome-wordpress-picker
+  * Description: WordPress plugin to use Font Awesome icons on posts and pages as a Gutenberg block
   * Version: 0.9.0
   * Author: Victor Andeloci
   * Author URI: https://github.com/victorandeloci

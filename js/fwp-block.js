@@ -41,8 +41,8 @@ function checkForLocalIcons(){
 }
 
 wp.blocks.registerBlockType('fwp/icons', {
-  title: 'FontsAwesome Icons Picker',
-  icon: 'welcome-add-page',
+  title: 'FontAwesome Icons Picker',
+  icon: 'image-filter',
   attributes: {
     content: {type: 'string'}
   },
@@ -73,7 +73,7 @@ wp.blocks.registerBlockType('fwp/icons', {
       React.createElement(
         'h4',
         { style: { color: "#666" } },
-        'Fonts Awesome Icon Picker'
+        'Font Awesome Icon Picker'
       ),
       React.createElement(
         'div',
