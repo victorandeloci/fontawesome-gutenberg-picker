@@ -4,7 +4,7 @@
   * Plugin Name: Fonts Awesome WP Picker
   * Plugin URI: https://github.com/victorandeloci/fontsawesome-wordpress-picker
   * Description: WordPress plugin to use Fonts Awesome icons on posts and pages
-  * Version: 1.0.0
+  * Version: 0.9.0
   * Author: Victor Andeloci
   * Author URI: https://github.com/victorandeloci
   */

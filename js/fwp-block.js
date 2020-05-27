@@ -27,71 +27,6 @@ function renderHtmlIconBlock(icons){
   return htmlBlock;
 }
 
-function renderBlock(){
-  wp.blocks.registerBlockType('fwp/icons', {
-    title: 'FontsAwesome Icons Picker',
-    icon: 'welcome-add-page',
-    attributes: {
-      content: {type: 'string'}
-    },
-    category: 'common',
-    edit: function(props) {
-      function updateContent(event) {
-        props.setAttributes({content: event.target.value})
-      }
-      return React.createElement(
-        'div',
-        null,
-        React.createElement(
-          'h4',
-          { style: { color: "#666" } },
-          'Fonts Awesome Icon Picker'
-        ),
-        React.createElement(
-          'div',
-          {
-            id: 'iconsDisplayContainer',
-            className: 'selected-icons-display'
-          }
-        ),
-        React.createElement(
-          'input',
-          {
-            id: 'selectedIcons',
-            type: 'hidden',
-            placeholder: 'Selected Icons',
-            value: props.attributes.content,
-            onChange: updateContent
-          }
-        ),
-        React.createElement(
-          "div",
-          {
-            id: 'iconsSelectorContainer',
-            className: 'icons-container'
-          },
-          checkForLocalIcons()
-        )
-      );
-    },
-    save: function(props) {
-      return (
-        //htmlToElem( props.attributes.content )
-        props.attributes.content
-      );
-    }
-  })
-}
-
-function insertIconContent(dataClass){
-
-  let iconHtml = '<i class="' + dataClass + '"></i>'
-
-  $('#selectedIcons').val($('#selectedIcons').val() + iconHtml);
-  $('#iconsDisplayContainer').append(iconHtml);
-
-}
-
 function checkForLocalIcons(){
 
   if(localStorage.getItem('icons') != null){
@@ -105,7 +40,65 @@ function checkForLocalIcons(){
 
 }
 
-renderBlock();
+wp.blocks.registerBlockType('fwp/icons', {
+  title: 'FontsAwesome Icons Picker',
+  icon: 'welcome-add-page',
+  attributes: {
+    content: {type: 'string'}
+  },
+  category: 'common',
+  edit: function(props) {
+
+    if(!props.attributes.content)
+      props.attributes.content = '';
+
+    function insertIconContent(dataClass){
+
+      let iconHtml = '<i class="' + dataClass + '"></i>';
+
+      props.attributes.content += iconHtml;
+      $('#iconsDisplayContainer div').append(iconHtml);
+
+    }
+
+    //reset click listeners
+    $(document).off('click', '.fwp-icon');
+    $(document).on('click', '.fwp-icon', function(){
+      insertIconContent($(this).attr('data-class'));
+    });
+
+    return React.createElement(
+      'div',
+      null,
+      React.createElement(
+        'h4',
+        { style: { color: "#666" } },
+        'Fonts Awesome Icon Picker'
+      ),
+      React.createElement(
+        'div',
+        {
+          id: 'iconsDisplayContainer',
+          className: 'selected-icons-display'
+        },
+        htmlToElem( props.attributes.content )
+      ),
+      React.createElement(
+        "div",
+        {
+          id: 'iconsSelectorContainer',
+          className: 'icons-container'
+        },
+        checkForLocalIcons()
+      )
+    );
+  },
+  save: function(props) {
+    return (
+      htmlToElem( props.attributes.content )
+    );
+  }
+});
 
 $(document).ready(function(){
 
@@ -124,9 +117,5 @@ $(document).ready(function(){
       }
     );
   }
-
-  $(document).on('click', '.fwp-icon', function(){
-    insertIconContent($(this).attr('data-class'));
-  });
 
 });
