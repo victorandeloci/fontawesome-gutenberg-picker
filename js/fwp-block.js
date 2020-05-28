@@ -1,3 +1,20 @@
+/*
+  This file is part of FontAwesome WordPress Picker.
+
+  FontAwesome WordPress Picker is free software: you can redistribute it and/or modify
+  it under the terms of the GNU General Public License as published by
+  the Free Software Foundation, either version 3 of the License, or
+  (at your option) any later version.
+
+  FontAwesome WordPress Picker is distributed in the hope that it will be useful,
+  but WITHOUT ANY WARRANTY; without even the implied warranty of
+  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  GNU General Public License for more details.
+
+  You should have received a copy of the GNU General Public License
+  along with FontAwesome WordPress Picker.  If not, see <https://www.gnu.org/licenses/>
+*/
+
 const htmlToElem = ( html ) => wp.element.RawHTML( { children: html } );
 
 function renderHtmlIconBlock(icons){
@@ -52,25 +69,22 @@ wp.blocks.registerBlockType('fwp/icons', {
     if(!props.attributes.content)
       props.attributes.content = '';
 
-    function insertIconContent(dataClass, title){
-
-      let iconHtml = '<i title = "' + title + '" class="' + dataClass + ' displayed-icon"></i>';
-
-      props.setAttributes({content: props.attributes.content + iconHtml});
-
-    }
-
     //reset click listeners
     $(document).off('click', '.fwp-icon');
     $(document).on('click', '.fwp-icon', function(){
-      insertIconContent($(this).attr('data-class'), $(this).attr('title'));
+
+  	  let iconHtml = '<i title="' + $(this).attr('title') + '" class="' + $(this).attr('data-class') + ' displayed-icon"></i>';
+  	  props.setAttributes({content: props.attributes.content + iconHtml});
+
     });
 
     $(document).off('click', '.displayed-icon');
     $(document).on('click', '.displayed-icon', function(){
 
-      let element = $(this).get()[0].outerHTML;
-      props.setAttributes({content: props.attributes.content.replace(element, '')});
+  	  let element = $(this).get()[0].outerHTML;
+  	  let tempProps = props.attributes.content.replace(element, '');
+
+      props.setAttributes({content: tempProps});
 
       $(this).remove();
 
