@@ -1,18 +1,18 @@
 /*
-  This file is part of FontAwesome WordPress Picker.
+  This file is part of FA Icons Picker.
 
-  FontAwesome WordPress Picker is free software: you can redistribute it and/or modify
+  FA Icons Picker is free software: you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
   the Free Software Foundation, either version 3 of the License, or
   (at your option) any later version.
 
-  FontAwesome WordPress Picker is distributed in the hope that it will be useful,
+  FA Icons Picker is distributed in the hope that it will be useful,
   but WITHOUT ANY WARRANTY; without even the implied warranty of
   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
   GNU General Public License for more details.
 
   You should have received a copy of the GNU General Public License
-  along with FontAwesome WordPress Picker.  If not, see <https://www.gnu.org/licenses/>
+  along with FA Icons Picker.  If not, see <https://www.gnu.org/licenses/>
 */
 
 const htmlToElem = ( html ) => wp.element.RawHTML( { children: html } );
@@ -57,8 +57,8 @@ function checkForLocalIcons(){
 
 }
 
-wp.blocks.registerBlockType('fwp/icons', {
-  title: 'FontAwesome Icons Picker',
+wp.blocks.registerBlockType('faip/icons', {
+  title: 'FA Icons Picker',
   icon: 'image-filter',
   attributes: {
     content: {type: 'string'}
@@ -96,7 +96,7 @@ wp.blocks.registerBlockType('fwp/icons', {
       React.createElement(
         'h4',
         { style: { color: "#666" } },
-        'Font Awesome Icon Picker'
+        'FA Icons Picker'
       ),
       React.createElement(
         'div',
