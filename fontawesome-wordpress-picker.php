@@ -25,6 +25,7 @@
   * Author: Victor Andeloci
   * Author URI: https://github.com/victorandeloci
   * License: GPLv3
+  * License URI: https://www.gnu.org/licenses/gpl-3.0.pt-br.html
   */
 
   function loadFwpBlock() {
