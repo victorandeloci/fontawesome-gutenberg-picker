@@ -11,7 +11,7 @@ Based on icons provided in [metadata](https://github.com/FortAwesome/Font-Awesom
 2. You will need Font Awesome loaded on your front-end. You can install manually, following [these steps](https://fontawesome.com/how-to-use/on-the-web/setup/hosting-font-awesome-yourself); or download the [WordPress plugin](https://br.wordpress.org/plugins/font-awesome/) to your website.
 
 ## Usage
-After activated, the plugin will create a Gutenberg block called 'FA Icons Picker'. Just add it to your post/page and select your icons!
+After activated, the plugin will create a Gutenberg block called 'Icons Picker for FontAwesome'. Just add it to your post/page and select your icons!
 
 ## Licence
 License: GPLv3

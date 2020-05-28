@@ -1,24 +1,24 @@
 <?php
 
   /*
-    This file is part of FA Icons Picker.
+    This file is part of Icons Picker for FontAwesome.
 
-    FA Icons Picker is free software: you can redistribute it and/or modify
+    Icons Picker for FontAwesome is free software: you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
     the Free Software Foundation, either version 3 of the License, or
     (at your option) any later version.
 
-    FA Icons Picker is distributed in the hope that it will be useful,
+    Icons Picker for FontAwesome is distributed in the hope that it will be useful,
     but WITHOUT ANY WARRANTY; without even the implied warranty of
     MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
     GNU General Public License for more details.
 
     You should have received a copy of the GNU General Public License
-    along with FA Icons Picker.  If not, see <https://www.gnu.org/licenses/>
+    along with Icons Picker for FontAwesome.  If not, see <https://www.gnu.org/licenses/>
   */
 
   /*
-  * Plugin Name: FA Icons Picker
+  * Plugin Name: Icons Picker for FontAwesome
   * Plugin URI: https://github.com/victorandeloci/fontawesome-wordpress-picker
   * Description: WordPress plugin to use Font Awesome icons on posts and pages as a Gutenberg block
   * Version: 0.9.0
