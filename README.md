@@ -1,8 +1,3 @@
-/*
-* License: GPLv3
-* License URI: https://www.gnu.org/licenses/gpl-3.0.pt-br.html
-*/
-
 # FontAwesome WordPress Picker
 WordPress plugin to use Font Awesome icons on posts and pages as a Gutenberg Block
 
@@ -17,3 +12,8 @@ Based on icons provided in [metadata](https://github.com/FortAwesome/Font-Awesom
 
 ## Usage
 After activated, the plugin will create a Gutenberg block called 'FontAwesome Icons Picker'. Just add it to your post/page and select your icons!
+
+## Licence
+
+License: GPLv3
+License URI: https://www.gnu.org/licenses/gpl-3.0.pt-br.html
