@@ -21,7 +21,7 @@
   * Plugin Name: Icons Picker for FontAwesome
   * Plugin URI: https://github.com/victorandeloci/fontawesome-wordpress-picker
   * Description: WordPress plugin to use Font Awesome icons on posts and pages as a Gutenberg block
-  * Version: 0.9.0
+  * Version: 0.9.2
   * Author: Victor Andeloci
   * Author URI: https://github.com/victorandeloci
   * License: GPLv3
