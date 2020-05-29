@@ -19,14 +19,17 @@
   width: 100%;
 }
 
-.icons-container div{
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  margin-top: 2rem;
-  height: 30vh;
+.icons-container{
+  max-height: 30vh;
   overflow-y: auto;
 }
+  .icons-container div{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: 2rem;
+    max-height: 100%;
+  }
 
 .selected-icons-display i,
 .icons-container i{

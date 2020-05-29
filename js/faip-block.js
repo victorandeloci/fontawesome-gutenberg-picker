@@ -70,23 +70,23 @@ wp.blocks.registerBlockType('faip/icons', {
       props.attributes.content = '';
 
     //reset click listeners
-    $(document).off('click', '.fwp-icon');
-    $(document).on('click', '.fwp-icon', function(){
+    jQuery(document).off('click', '.fwp-icon');
+    jQuery(document).on('click', '.fwp-icon', function(){
 
-  	  let iconHtml = '<i title="' + $(this).attr('title') + '" class="' + $(this).attr('data-class') + ' displayed-icon"></i>';
+  	  let iconHtml = '<i title="' + jQuery(this).attr('title') + '" class="' + jQuery(this).attr('data-class') + ' displayed-icon"></i>';
   	  props.setAttributes({content: props.attributes.content + iconHtml});
 
     });
 
-    $(document).off('click', '.displayed-icon');
-    $(document).on('click', '.displayed-icon', function(){
+    jQuery(document).off('click', '.displayed-icon');
+    jQuery(document).on('click', '.displayed-icon', function(){
 
-  	  let element = $(this).get()[0].outerHTML;
+  	  let element = jQuery(this).get()[0].outerHTML;
   	  let tempProps = props.attributes.content.replace(element, '');
 
       props.setAttributes({content: tempProps});
 
-      $(this).remove();
+      jQuery(this).remove();
 
     });
 
@@ -123,19 +123,19 @@ wp.blocks.registerBlockType('faip/icons', {
   }
 });
 
-$(document).ready(function(){
+jQuery(document).ready(function(){
 
   if(localStorage.getItem('icons') === null){
-    $.getJSON(
-      'https://raw.githubusercontent.com/FortAwesome/Font-Awesome/master/metadata/icons.json',
+    jQuery.getJSON(
+      js_data.icons_json,
       function(data) {
 
         const icons = JSON.parse(JSON.stringify(data));
 
         localStorage.setItem('icons', JSON.stringify(icons));
 
-        if($('#iconsSelectorContainer'))
-          $('#iconsSelectorContainer').append(renderHtmlIconBlock(icons));
+        if(jQuery('#iconsSelectorContainer'))
+          jQuery('#iconsSelectorContainer').append(renderHtmlIconBlock(icons));
 
       }
     );

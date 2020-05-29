@@ -21,7 +21,7 @@
   * Plugin Name: Icons Picker for FontAwesome
   * Plugin URI: https://github.com/victorandeloci/fontawesome-wordpress-picker
   * Description: WordPress plugin to use Font Awesome icons on posts and pages as a Gutenberg block
-  * Version: 0.9.2
+  * Version: 0.9.3
   * Author: Victor Andeloci
   * Author URI: https://github.com/victorandeloci
   * License: GPLv3
@@ -31,17 +31,18 @@
   function loadFaIpBlock() {
 
     wp_enqueue_script(
-      'jquery-3.5.1',
-      'https://code.jquery.com/jquery-3.5.1.min.js',
-      array(),
+      'faip-block',
+      plugin_dir_url(__FILE__) . 'js/faip-block.js',
+      array('wp-blocks','wp-editor', 'jquery'),
       true
     );
 
-    wp_enqueue_script(
+    wp_localize_script(
       'faip-block',
-      plugin_dir_url(__FILE__) . 'js/faip-block.js',
-      array('wp-blocks','wp-editor'),
-      true
+      'js_data',
+      array(
+        'icons_json' => plugins_url( 'data/icons.json', __FILE__ )
+      )
     );
 
     wp_enqueue_style(
@@ -56,7 +57,7 @@
       'style',
       plugin_dir_url(__FILE__) . 'css/style.css',
       null,
-      '1.0.0',
+      '1.0.1',
       'screen'
     );
 
